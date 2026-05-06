@@ -2,7 +2,6 @@ import { network } from "hardhat";
 
 async function main() {
   const { ethers } = await network.create();
-
   const [deployer] = await ethers.getSigners();
 
   console.log("Deploying with:", deployer.address);
@@ -20,4 +19,7 @@ async function main() {
   console.log("Factory:", await factory.getAddress());
 }
 
-main();
+main().catch((err) => {
+  console.error(err);
+  process.exitCode = 1;
+});
