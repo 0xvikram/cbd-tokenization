@@ -7,6 +7,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { getSigner } from "@/lib/web3";
 import { FACTORY_ADDRESS, USDC_ADDRESS, FACTORY_ABI, PROPERTY_ABI, USDC_ABI } from "@/lib/contracts";
 
+declare global {
+  interface Window {
+    ethereum?: any;
+  }
+}
+
 export default function TokenizationDashboard() {
   const [signer, setSigner] = useState<ethers.JsonRpcSigner | null>(null);
   const [address, setAddress] = useState<string>("");

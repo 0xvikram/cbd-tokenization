@@ -1,5 +1,11 @@
 import { ethers } from "ethers";
 
+declare global {
+  interface Window {
+    ethereum?: any;
+  }
+}
+
 export async function getProvider() {
     if (!window.ethereum) throw new Error("MetaMask not found");
 
